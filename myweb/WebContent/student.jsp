@@ -14,23 +14,25 @@
 		//但是，如果你的HTML是动态生成的，自动渲染就会失效
 		//因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
 		form.render();
-		layui.use('upload', function(){
-			  var upload = layui.upload;
-			   
-			  //执行实例
-			  var uploadInst = upload.render({
-			    elem: '#test1' //绑定元素
-			    ,url: '/upload/' //上传接口
-			    ,done: function(res){
-			    	layui.msg("aaa");
-			      //上传完毕回调
-			    }
-			    ,error: function(){
-			    	layui.msg("bbb");
-			      //请求异常回调
-			    }
-			  });
+		layui.use('upload', function() {
+			var upload = layui.upload;
+
+			//执行实例
+			var uploadInst = upload.render({
+				elem : '#test1' //绑定元素
+				,
+				url : '/upload/' //上传接口
+				,
+				done : function(res) {
+					layui.msg("aaa");
+					//上传完毕回调
+				},
+				error : function() {
+					layui.msg("bbb");
+					//请求异常回调
+				}
 			});
+		});
 	});
 </script>
 <body>
@@ -41,7 +43,7 @@
 	<form class="layui-form" action="./student" method="post">
 		<input type="hidden" name="action" value="save">
 		<div class="layui-form-item">
-			<label class="layui-form-label">姓名</label>
+			<label class="layui-form-label">学号</label>
 			<div class="layui-input-inline">
 				<input type="text" name="id" required placeholder="请输入学号"
 					autocomplete="off" class="layui-input">
@@ -88,7 +90,14 @@
 				<textarea name="self" placeholder="请输入内容" class="layui-textarea"></textarea>
 			</div>
 		</div>
-10.<button type="button" class="layui-btn" id="test1">11.  <i class="layui-icon">&#xe67c;</i>上传图片12.</button>
+		<div class="layui-form-item">
+			<label class="layui-form-label">照片</label>
+			<div class="layui-input-inline">
+				<button type="button" class="layui-btn" id="test1">
+					<i class="layui-icon">&#xe67c;</i>上传图片
+				</button>
+			</div>
+		</div>
 		<div class="layui-form-item">
 			<div class="layui-input-block">
 				<button class="layui-btn" lay-filter="" lay-submit>立即提交</button>
